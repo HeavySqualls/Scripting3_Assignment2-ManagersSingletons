@@ -5,17 +5,10 @@ public class SceneController : MonoBehaviour
 {
     private int currentScene; 
     private int sceneToLoad;
-
-
-   
+ 
     void Awake()
     {
         DontDestroyOnLoad(this.gameObject);
-    }
-
-    void Start()
-    {
-
     }
 
     void Update()
@@ -23,6 +16,11 @@ public class SceneController : MonoBehaviour
         if (Input.GetKeyUp(KeyCode.Return))
         {
             LoadNextScene();
+        }
+
+        if (Input.GetKeyUp(KeyCode.Escape))
+        {
+            LoadMainMenu();
         }
     }
 
@@ -36,6 +34,11 @@ public class SceneController : MonoBehaviour
     public void LoadSameScene()
     {
         SceneManager.LoadScene(currentScene);
+    }
+
+    public void LoadMainMenu()
+    {
+        SceneManager.LoadScene(0);
     }
 
 }
