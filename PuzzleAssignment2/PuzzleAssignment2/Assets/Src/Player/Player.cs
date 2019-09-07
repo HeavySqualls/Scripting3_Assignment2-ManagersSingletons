@@ -10,6 +10,8 @@ public class Player : MonoBehaviour {
 	private float velocity = 0;
 	private int moveCount = 0;
 	private CharacterController cc;
+    private PlayerManager playerManager;
+    private SceneController sceneManager;
 
     enum State {
         Idle,
@@ -22,6 +24,7 @@ public class Player : MonoBehaviour {
 	// Use this for initialization
 	void Start() {
 		cc = this.GetComponent<CharacterController>();
+        this.sceneManager = Toolbox.GetInstance().GetSceneManager();
 	}
 
 	// Update is called once per frame
@@ -72,8 +75,9 @@ public class Player : MonoBehaviour {
 	}
 
 	void Won () {
-		//print("I Win");
+		print("I Win");
 		this.velocity = 0;
+        sceneManager.LoadNextScene();
 	}
 
 	void OnControllerColliderHit(ControllerColliderHit hit) {
