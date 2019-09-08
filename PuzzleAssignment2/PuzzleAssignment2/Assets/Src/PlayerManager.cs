@@ -22,7 +22,7 @@ public class PlayerManager : MonoBehaviour
     public int playerScore = 0;
     public int totalMoves = 0;
     public int timesDied = 0;
-    // game time 
+    // Game time tracked by TimerManager instance
 
     public int TotalScore(int value)
     {
@@ -43,6 +43,7 @@ public class PlayerManager : MonoBehaviour
 
     public void GameReset()
     {
+        Debug.Log("Game Reset!");
         playerScore = 0;
         totalMoves = 0;
         timesDied = 0;

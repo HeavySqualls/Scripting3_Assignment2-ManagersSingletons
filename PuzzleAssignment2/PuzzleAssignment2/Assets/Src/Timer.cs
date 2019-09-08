@@ -7,8 +7,6 @@ public class Timer : MonoBehaviour
 {
     static Timer instance;
 
-    public Text timerText;
-
     private float startTime;
     private float currentTime;
     private bool trackTime = false;
@@ -27,11 +25,6 @@ public class Timer : MonoBehaviour
             instance = this;
             DontDestroyOnLoad(this);
         }
-    }
-
-    void Start()
-    {
-        startTime = Time.time;
     }
 
     void Update()
@@ -56,6 +49,7 @@ public class Timer : MonoBehaviour
 
     public void StartTimer()
     {
+        startTime = Time.time;
         trackTime = true;
     }
 
@@ -66,6 +60,7 @@ public class Timer : MonoBehaviour
 
     public void ResetTimer()
     {
-        currentTime = startTime; 
+        minutes = 0.ToString();
+        seconds = 0.ToString();
     }
 }
