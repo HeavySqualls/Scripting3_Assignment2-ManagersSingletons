@@ -41,10 +41,11 @@ public class PlayerManager : MonoBehaviour
         timesDied += 1;
     }
 
-    public void ScoreReset()
+    public void GameReset()
     {
         playerScore = 0;
         totalMoves = 0;
         timesDied = 0;
+        Toolbox.GetInstance().GetTimer().ResetTimer();
     }
 }

@@ -6,8 +6,10 @@ public class SceneController : MonoBehaviour
     private int currentScene; 
     private int sceneToLoad;
 
-    private bool gameStarted = false;
+    private int startGameScene = 0;
+    private int endGameScene = 5;
 
+    private bool gameStarted = false;
 
     private static SceneController instance;
     void Awake()
@@ -43,9 +45,15 @@ public class SceneController : MonoBehaviour
     {
         currentScene = SceneManager.GetActiveScene().buildIndex;
         sceneToLoad = currentScene + 1;
-        if (sceneToLoad == 5)
+
+        if (sceneToLoad == endGameScene) // if next scene is the score scene
         {
             Toolbox.GetInstance().GetTimer().StopTimer();
+            SceneManager.LoadScene(sceneToLoad);
+        }
+        if (sceneToLoad == startGameScene)
+        {
+            Toolbox.GetInstance().GetPlayerManager().GameReset();
             SceneManager.LoadScene(sceneToLoad);
         }
         else

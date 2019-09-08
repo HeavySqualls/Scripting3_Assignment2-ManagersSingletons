@@ -10,6 +10,7 @@ public class Timer : MonoBehaviour
     public Text timerText;
 
     private float startTime;
+    private float currentTime;
     private bool trackTime = false;
 
     public string minutes;
@@ -46,10 +47,10 @@ public class Timer : MonoBehaviour
         }
         else
         {
-            float t = Time.time - startTime;
+            currentTime = Time.time - startTime;
 
-            minutes = ((int)t / 60).ToString();
-            seconds = (t % 60).ToString("f2");
+            minutes = ((int)currentTime / 60).ToString();
+            seconds = (currentTime % 60).ToString("f2");
         }
     }
 
@@ -63,8 +64,8 @@ public class Timer : MonoBehaviour
         trackTime = false;
     }
 
-    public void DisplayTime()
+    public void ResetTimer()
     {
-        timerText.text = minutes + ":" + seconds;
+        currentTime = startTime; 
     }
 }
