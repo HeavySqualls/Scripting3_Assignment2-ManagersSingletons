@@ -19,14 +19,6 @@ public class PlayerManager : MonoBehaviour
         }
     }
 
-    void Start()
-    {
-    }
-
-    void Update()
-    {
-    }
-
     public int playerScore = 0;
     public int totalMoves = 0;
     public int timesDied = 0;

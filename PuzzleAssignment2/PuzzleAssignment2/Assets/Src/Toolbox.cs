@@ -20,6 +20,7 @@ public class Toolbox : MonoBehaviour
 
     private SceneController sceneManager;
     private PlayerManager playerManager;
+    private Timer timer;
 
     void Awake()
     {
@@ -38,6 +39,9 @@ public class Toolbox : MonoBehaviour
 
         var go2 = new GameObject("PlayerManager");
         this.playerManager = go2.AddComponent<PlayerManager>();
+
+        var go3 = new GameObject("Timer");
+        this.timer = go3.AddComponent<Timer>();
     }
 
     public SceneController GetSceneManager()
@@ -48,5 +52,10 @@ public class Toolbox : MonoBehaviour
     public PlayerManager GetPlayerManager()
     {
         return this.playerManager;
+    }
+
+    public Timer GetTimer()
+    {
+        return this.timer;
     }
 }

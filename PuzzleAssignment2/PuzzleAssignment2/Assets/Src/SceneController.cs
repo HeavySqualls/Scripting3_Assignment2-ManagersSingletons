@@ -6,6 +6,8 @@ public class SceneController : MonoBehaviour
     private int currentScene; 
     private int sceneToLoad;
 
+    private bool gameStarted = false;
+
 
     private static SceneController instance;
     void Awake()
@@ -23,13 +25,16 @@ public class SceneController : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyUp(KeyCode.Return))
+        if (Input.GetKeyUp(KeyCode.Return) && !gameStarted)
         {
+            gameStarted = true;
+            Toolbox.GetInstance().GetTimer().StartTimer();
             LoadNextScene();
         }
 
         if (Input.GetKeyUp(KeyCode.Escape))
         {
+            gameStarted = false;
             LoadMainMenu();
         }
     }
@@ -38,7 +43,15 @@ public class SceneController : MonoBehaviour
     {
         currentScene = SceneManager.GetActiveScene().buildIndex;
         sceneToLoad = currentScene + 1;
-        SceneManager.LoadScene(sceneToLoad);
+        if (sceneToLoad == 5)
+        {
+            Toolbox.GetInstance().GetTimer().StopTimer();
+            SceneManager.LoadScene(sceneToLoad);
+        }
+        else
+        {
+            SceneManager.LoadScene(sceneToLoad);
+        }
     }
 
     public void LoadSameScene()
