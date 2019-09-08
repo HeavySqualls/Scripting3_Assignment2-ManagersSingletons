@@ -10,8 +10,6 @@ public class Player : MonoBehaviour {
 	private float velocity = 0;
 	private int moveCount = 0;
 	private CharacterController cc;
-    private PlayerManager playerManager;
-    private SceneController sceneManager;
 
     enum State {
         Idle,
@@ -24,7 +22,6 @@ public class Player : MonoBehaviour {
 	// Use this for initialization
 	void Start() {
 		cc = this.GetComponent<CharacterController>();
-        this.sceneManager = Toolbox.GetInstance().GetSceneManager();
 	}
 
 	// Update is called once per frame
@@ -56,9 +53,9 @@ public class Player : MonoBehaviour {
 			this.transform.rotation *= Quaternion.Euler(0, this.speed * Time.deltaTime, 0);
 		}
 
-		if (Input.GetKey(KeyCode.Space)) {
-			// let's gooo
-			this.currentState = State.Moving;
+		if (Input.GetKeyUp(KeyCode.Space)) {
+            Toolbox.GetInstance().GetPlayerManager().TotalMoves();
+            this.currentState = State.Moving;
 			this.velocity = this.initialVelocity;
 			this.moveCount++;
 		}
@@ -77,7 +74,7 @@ public class Player : MonoBehaviour {
 	void Won () {
 		print("I Win");
 		this.velocity = 0;
-        sceneManager.LoadNextScene();
+        Toolbox.GetInstance().GetSceneManager().LoadNextScene();
 	}
 
 	void OnControllerColliderHit(ControllerColliderHit hit) {
@@ -104,6 +101,7 @@ public class Player : MonoBehaviour {
 
 	public int AccumulateScore (int scoreAdd) {
 		this.score += scoreAdd;
+        Toolbox.GetInstance().GetPlayerManager().TotalScore(this.score);
 		return this.score;
 	}
 }

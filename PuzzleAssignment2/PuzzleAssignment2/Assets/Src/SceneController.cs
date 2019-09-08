@@ -5,10 +5,20 @@ public class SceneController : MonoBehaviour
 {
     private int currentScene; 
     private int sceneToLoad;
- 
+
+
+    private static SceneController instance;
     void Awake()
     {
-        DontDestroyOnLoad(this.gameObject);
+        if (instance != null)
+        {
+            Destroy(this);
+        }
+        else
+        {
+            instance = this;
+            DontDestroyOnLoad(this);
+        }
     }
 
     void Update()

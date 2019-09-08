@@ -17,19 +17,20 @@ public class Toolbox : MonoBehaviour
         return Toolbox._instance;
     }
 
-    // Managers
 
     private SceneController sceneManager;
     private PlayerManager playerManager;
 
     void Awake()
     {
-        DontDestroyOnLoad(this);
-
-        if (Toolbox._instance)
+        if (_instance != null)
         {
-            Destroy(this);
-            return;
+            Destroy(this.gameObject);
+        }
+        else
+        {
+            _instance = this;
+            DontDestroyOnLoad(this);
         }
 
         var go = new GameObject("SceneManager");
