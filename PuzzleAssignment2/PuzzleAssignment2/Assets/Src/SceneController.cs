@@ -10,20 +10,6 @@ public class SceneController : MonoBehaviour
 
     private bool gameStarted = false;
 
-    private static SceneController instance;
-    void Awake()
-    {
-        if (instance != null)
-        {
-            Destroy(this);
-        }
-        else
-        {
-            instance = this;
-            DontDestroyOnLoad(this);
-        }
-    }
-
     void Update()
     {
         if (Input.GetKeyUp(KeyCode.Return) && !gameStarted)

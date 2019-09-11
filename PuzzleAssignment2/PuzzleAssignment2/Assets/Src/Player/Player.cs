@@ -19,12 +19,10 @@ public class Player : MonoBehaviour {
 
     private State currentState = State.Idle;
 
-	// Use this for initialization
 	void Start() {
 		cc = this.GetComponent<CharacterController>();
 	}
 
-	// Update is called once per frame
 	void Update() {
         Vector3 direction = Physics.gravity;
 		direction += this.transform.forward * velocity;

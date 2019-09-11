@@ -34,14 +34,14 @@ public class Toolbox : MonoBehaviour
             DontDestroyOnLoad(this);
         }
 
-        var go = new GameObject("SceneManager");
-        this.sceneManager = go.AddComponent<SceneController>();
+        //var go = new GameObject("SceneManager");
+        this.sceneManager = gameObject.AddComponent<SceneController>();
 
-        var go2 = new GameObject("PlayerManager");
-        this.playerManager = go2.AddComponent<PlayerManager>();
+        //var go2 = new GameObject("PlayerManager");
+        this.playerManager = gameObject.AddComponent<PlayerManager>();
 
-        var go3 = new GameObject("Timer");
-        this.timer = go3.AddComponent<Timer>();
+        //var go3 = new GameObject("Timer");
+        this.timer = gameObject.AddComponent<Timer>();
     }
 
     public SceneController GetSceneManager()

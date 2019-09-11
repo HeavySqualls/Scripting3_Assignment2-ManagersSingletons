@@ -4,25 +4,9 @@ using UnityEngine;
 
 public class PlayerManager : MonoBehaviour
 {
-    static PlayerManager instance;
-
-    void Awake()
-    {
-        if (instance != null)
-        {
-            Destroy(this.gameObject);
-        }
-        else
-        {
-            instance = this;
-            DontDestroyOnLoad(this);
-        }
-    }
-
     public int playerScore = 0;
     public int totalMoves = 0;
     public int timesDied = 0;
-    // Game time tracked by TimerManager instance
 
     public int TotalScore(int value)
     {

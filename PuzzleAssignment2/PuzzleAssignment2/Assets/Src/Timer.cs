@@ -5,27 +5,12 @@ using UnityEngine.UI;
 
 public class Timer : MonoBehaviour
 {
-    static Timer instance;
-
     private float startTime;
     private float currentTime;
     private bool trackTime = false;
 
     public string minutes;
     public string seconds;
-
-    void Awake()
-    {
-        if (instance != null)
-        {
-            Destroy(this.gameObject);
-        }
-        else
-        {
-            instance = this;
-            DontDestroyOnLoad(this);
-        }
-    }
 
     void Update()
     {
@@ -34,11 +19,7 @@ public class Timer : MonoBehaviour
 
     private void TrackTime()
     {
-        if (!trackTime)
-        {
-            return;
-        }
-        else
+        if (trackTime)
         {
             currentTime = Time.time - startTime;
 
